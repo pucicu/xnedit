@@ -168,6 +168,7 @@ static void backlightCharsDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void highlightCursorLineDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void showRightMarginDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void rightMarginCB(Widget w, WindowInfo *window, caddr_t callData);
+static void rightMarginDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void indentRainbowDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void ansiColorsDefCB(Widget w, WindowInfo *window, caddr_t callData);
 static void fontDefCB(Widget w, WindowInfo *window, caddr_t callData);
@@ -999,7 +1000,7 @@ Widget RecreateMenuBar(Widget parent, Widget menuBar, WindowInfo *window, Boolea
           "showRightMargin", "Show Right Margin", '\0', (menuCallbackProc)showRightMarginDefCB,
           window, GetPrefShowRightMargin(), FULL);
     createMenuItem(subPane, "rightMargin", "Right Margin...", '\0',
-    	    (menuCallbackProc)rightMarginCB, NULL, FULL);
+    	    (menuCallbackProc)rightMarginDefCB, NULL, FULL);
 #endif
     window->indentRainbowDefItem = createMenuToggle(subPane,
           "indentRainbow", "Indent Rainbow", 'R', (menuCallbackProc)indentRainbowDefCB,
@@ -2168,6 +2169,10 @@ static void showRightMarginDefCB(Widget w, WindowInfo *window, caddr_t callData)
 static void rightMarginCB(Widget w, WindowInfo *window, caddr_t callData) {
     window = WidgetToWindow(MENU_WIDGET(w));
     RightMarginDialog(WidgetToWindow(w)->shell, window);
+}
+
+static void rightMarginDefCB(Widget w, WindowInfo *window, caddr_t callData) {
+    RightMarginDialog(WidgetToWindow(w)->shell, NULL);
 }
 
 static void indentRainbowDefCB(Widget w, WindowInfo *window, caddr_t callData)
