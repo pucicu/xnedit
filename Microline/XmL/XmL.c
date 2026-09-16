@@ -71,6 +71,12 @@
 int fprintf(FILE *, char *, ...);
 #endif
 
+#if XmVersion > 2003
+#ifndef USE_XFT
+#define USE_XFT 1
+#endif
+#endif
+
 static void XmLDrawnBDestroyCB(Widget w, XtPointer clientData, XtPointer);
 static void XmLDrawnBDrawCB(Widget, XtPointer, XtPointer);
 static void XmLDrawnBDrawStringCB(Widget, XtPointer, XtPointer);
