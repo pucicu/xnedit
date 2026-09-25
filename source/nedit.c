@@ -170,7 +170,7 @@ static char *fallbackResources[] = {
        as insensitive text buttons are blank.  That bug is fixed in 2.3.3.
       */
 
-#if (XmVersion >= 2003 && XmUPDATE_LEVEL >= 3 && USE_XFT == 1)
+#if ((XmVersion == 2003 && XmUPDATE_LEVEL >= 3 && USE_XFT == 1) || XmVersion > 2003)
     "*buttonRenderTable:        defaultRT",
     "*labelRenderTable:         defaultRT",
     "*textRenderTable:          fixedRT",
@@ -192,7 +192,7 @@ static char *fallbackResources[] = {
     "*textFontList: "           NEDIT_FIXED_FONT,
 #endif
 #ifdef XNE_TEXTFIELD
-    "*XmTextField.XftFont:      Monospace:size=10",         
+    "*XmTextField.XftFont:      Monospace:size=10",
 #endif
 
     /*
